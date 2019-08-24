@@ -23,7 +23,15 @@ const ColorList = ({ colors, updateColors }) => {
     // where is is saved right now?
     axiosWithAuth().put(`http://localhost:5000/api/colors/${colorToEdit.id}`, colorToEdit)
       .then(res => {
-        console.log('put', res);
+        // console.log('put', res);
+        // console.log('colorsToEdit', colorToEdit);
+        updateColors(colors.map(color => {
+          if(color.id === colorToEdit.id) {
+            return colorToEdit;
+          }
+          return color;
+        }));
+
       })
       .catch(err => console.log(err.response))
   };

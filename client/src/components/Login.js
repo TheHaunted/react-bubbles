@@ -12,6 +12,7 @@ const Login = props => {
   
   const handleSubmit = event => {
     event.preventDefault();
+    console.log(creds);
     axios.post('http://localhost:5000/api/login', creds)
       .then(res => {
         console.log('login', res);
